@@ -1,0 +1,252 @@
+.cadastro-page {
+  min-height: 100vh;
+  width: 100%;
+
+  background-color: #121212;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 64px 20px;
+
+  box-sizing: border-box;
+}
+
+/* Card */
+
+.cadastro-card {
+  width: 480px;
+  max-width: 100%;
+
+  background-color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 32px;
+
+  padding: 48px;
+
+  box-sizing: border-box;
+
+  border-radius: 16px;
+
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Cabeçalho */
+
+.cadastro-header {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 8px;
+
+  text-align: center;
+}
+
+.cadastro-header h1 {
+  margin: 0;
+
+  color: #111111;
+
+  font-size: 24px;
+  font-weight: 800;
+
+  line-height: normal;
+}
+
+.cadastro-header p {
+  margin: 0;
+
+  color: #666666;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  line-height: normal;
+}
+
+/* Formulário */
+
+.cadastro-form {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+.cadastro-fields {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+
+  padding: 24px 32px;
+
+  box-sizing: border-box;
+}
+
+.cadastro-field {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.cadastro-field label {
+  width: 100%;
+
+  color: #666666;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.cadastro-field input {
+  width: 100%;
+  height: 42px;
+
+  padding: 12px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #e5e5eb;
+  border-radius: 8px;
+
+  outline: none;
+
+  color: #333333;
+
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+}
+
+.cadastro-field input::placeholder {
+  color: #999999;
+}
+
+.cadastro-field input:focus {
+  border-color: #00c853;
+}
+
+/* Senhas */
+
+.cadastro-password {
+  width: 100%;
+
+  position: relative;
+}
+
+.cadastro-password input {
+  padding-right: 40px;
+}
+
+.password-button {
+  position: absolute;
+
+  right: 12px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  border: none;
+  background: transparent;
+
+  color: #999999;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  padding: 0;
+}
+
+/* Ações */
+
+.cadastro-actions {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 16px;
+}
+
+.cadastrar-button {
+  width: 100%;
+  height: 48px;
+
+  border: none;
+  border-radius: 8px;
+
+  background-color: #00c853;
+
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease;
+}
+
+.cadastrar-button:hover {
+  background-color: #00b34a;
+}
+
+.cadastro-actions p {
+  margin: 0;
+
+  color: #666666;
+
+  font-size: 13px;
+
+  line-height: normal;
+}
+
+.voltar-login {
+  border: none;
+  background: transparent;
+
+  color: #00c853;
+
+  font-family: inherit;
+  font-size: 13px;
+
+  cursor: pointer;
+
+  padding: 0;
+
+  text-decoration: underline;
+}
+
+/* Responsividade */
+
+@media (max-width: 600px) {
+  .cadastro-page {
+    padding: 30px 20px;
+  }
+
+  .cadastro-card {
+    padding: 32px 24px;
+  }
+
+  .cadastro-fields {
+    padding: 10px 0;
+  }
+}

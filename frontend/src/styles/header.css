@@ -1,0 +1,302 @@
+.header{
+    width:100%;
+    height:80px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 70px;
+
+    background:#ffffff;
+
+    box-sizing:border-box;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo-icon{
+
+    width:42px;
+    height:42px;
+
+    border-radius:8px;
+
+    background:#111;
+
+    color:#00d44a;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:22px;
+    font-weight:bold;
+}
+
+.logo h1{
+
+    font-size:35px;
+    font-weight:700;
+
+    color:#111;
+}
+
+.logo span{
+
+    color:#00d44a;
+}
+
+.menu{
+
+    display:flex;
+    gap:40px;
+}
+
+.menu a{
+
+    text-decoration:none;
+
+    color:#111;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.menu a:hover{
+
+    color:#00d44a;
+}
+
+.search{
+
+    width:290px;
+    height:44px;
+
+    background:#f2f2f2;
+
+    border-radius:30px;
+
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    padding:0 18px;
+}
+
+.search input{
+
+    border:none;
+    outline:none;
+
+    width:100%;
+
+    background:transparent;
+
+    font-size:15px;
+}
+
+.icons{
+
+    display:flex;
+    align-items:center;
+
+    gap:22px;
+
+    cursor:pointer;
+}
+
+.cart{
+
+    position:relative;
+}
+
+.cart span{
+
+    position:absolute;
+
+    top:-8px;
+    right:-10px;
+
+    width:18px;
+    height:18px;
+
+    border-radius:50%;
+
+    background:#00d44a;
+
+    color:#fff;
+
+    font-size:11px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-weight:bold;
+}
+.menu-link {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0;
+}
+
+.menu-link:hover {
+  color: #2563eb;
+}
+/* =========================
+   RESPONSIVIDADE
+   ========================= */
+
+/* TABLET */
+@media (max-width: 1100px) {
+
+    .header {
+        padding: 0 35px;
+    }
+
+    .menu {
+        gap: 20px;
+    }
+
+    .search {
+        width: 220px;
+    }
+
+    .logo h1 {
+        font-size: 28px;
+    }
+}
+
+
+/* TABLET PEQUENO */
+@media (max-width: 850px) {
+
+    .header {
+        padding: 0 25px;
+    }
+
+    .menu {
+        gap: 15px;
+    }
+
+    .menu a {
+        font-size: 14px;
+    }
+
+    .search {
+        width: 180px;
+    }
+
+    .logo {
+        gap: 10px;
+    }
+
+    .logo h1 {
+        font-size: 24px;
+    }
+
+    .logo-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .icons {
+        gap: 15px;
+    }
+}
+
+
+/* CELULAR */
+@media (max-width: 650px) {
+
+    .header {
+        height: 70px;
+        padding: 0 18px;
+    }
+
+    .logo {
+        gap: 8px;
+    }
+
+    .logo-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 18px;
+    }
+
+    .logo h1 {
+        font-size: 20px;
+    }
+
+    /* Esconde o menu de navegação */
+    .menu {
+        display: none;
+    }
+
+    .search {
+        width: auto;
+        max-width: 160px;
+        height: 38px;
+        padding: 0 12px;
+    }
+
+    .search input {
+        font-size: 12px;
+    }
+
+    .icons {
+        gap: 12px;
+    }
+}
+
+
+/* CELULAR PEQUENO */
+@media (max-width: 450px) {
+
+    .header {
+        padding: 0 12px;
+    }
+
+    .logo h1 {
+        font-size: 18px;
+    }
+
+    .logo-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+
+    .search {
+        max-width: 120px;
+    }
+
+    .search input {
+        font-size: 11px;
+    }
+
+    .icons {
+        gap: 8px;
+    }
+
+    .cart span {
+        width: 16px;
+        height: 16px;
+
+        font-size: 9px;
+
+        top: -7px;
+        right: -8px;
+    }
+}

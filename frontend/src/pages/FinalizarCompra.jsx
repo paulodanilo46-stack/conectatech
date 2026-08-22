@@ -1,5 +1,6 @@
 import Header from "../components/Header";
 import "../styles/finalizarCompra.css";
+import Footer from "../components/Footer";
 
 function FinalizarCompra({
   estaLogado,
@@ -237,7 +238,7 @@ function FinalizarCompra({
         </div>
 
       </main>
-
+      <Footer />
     </div>
   );
 }

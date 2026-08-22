@@ -1,5 +1,6 @@
 import Header from "../components/Header";
 import "../styles/produtos.css";
+import Footer from "../components/Footer";
 
 import cadeira from "../assets/cadeira.png";
 import monitor from "../assets/monitor.png";
@@ -229,7 +230,7 @@ function Produtos({
                 </div>
 
             </main>
-
+            <Footer />
         </div>
     );
 }

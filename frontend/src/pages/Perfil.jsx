@@ -1,6 +1,7 @@
 import "../styles/perfil.css";
 import { User, Package, Truck, Edit3, LogOut } from "lucide-react";
 import Header from "../components/Header.jsx";
+import Footer from "../components/Footer";
 
 function Perfil({
     estaLogado,
@@ -148,7 +149,7 @@ function Perfil({
                 </div>
 
             </main>
-
+            <Footer />
         </div>
     );
 }

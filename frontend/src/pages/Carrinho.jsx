@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "../components/Header";
 import "../styles/carrinho.css";
+import Footer from "../components/Footer";
 import { Trash2, Minus, Plus, ShoppingCart } from "lucide-react";
 
 function Carrinho({
@@ -37,9 +38,9 @@ function Carrinho({
       produtosAtuais.map((produto) =>
         produto.id === id
           ? {
-              ...produto,
-              quantidade: produto.quantidade + 1
-            }
+            ...produto,
+            quantidade: produto.quantidade + 1
+          }
           : produto
       )
     );
@@ -52,9 +53,9 @@ function Carrinho({
         .map((produto) =>
           produto.id === id
             ? {
-                ...produto,
-                quantidade: produto.quantidade - 1
-              }
+              ...produto,
+              quantidade: produto.quantidade - 1
+            }
             : produto
         )
         .filter((produto) => produto.quantidade > 0)
@@ -272,8 +273,9 @@ function Carrinho({
         </div>
 
       </main>
-
+      <Footer />
     </div>
+
   );
 }
 

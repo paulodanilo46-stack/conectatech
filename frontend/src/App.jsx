@@ -118,6 +118,8 @@ function App() {
         onCarrinho={() => setScreen("carrinho")}
         onProdutos={() => setScreen("produtos")}
         onHome={() => setScreen("inicio")}
+        onSobre={handleSobre}
+        onSuporte={handleSuporte}
       />
     );
   }
@@ -145,6 +147,8 @@ function App() {
         onCarrinho={handleCarrinho}
         onProdutos={() => setScreen("produtos")}
         onLogout={handleLogout}
+        onSobre={handleSobre}
+        onSuporte={handleSuporte}
       />
     );
   }
@@ -153,6 +157,8 @@ function App() {
     return (
       <Admin
         onHome={() => setScreen("inicio")}
+        onSobre={handleSobre}
+        onSuporte={handleSuporte}
       />
     );
   }
@@ -166,6 +172,8 @@ function App() {
         onCarrinho={handleCarrinho}
         onProdutos={() => setScreen("produtos")}
         onHome={() => setScreen("inicio")}
+        onSobre={handleSobre}
+        onSuporte={handleSuporte}
       />
     );
   }
@@ -180,6 +188,8 @@ function App() {
         onCarrinho={handleCarrinho}
         onProdutos={() => setScreen("produtos")}
         onHome={() => setScreen("inicio")}
+        onSobre={handleSobre}
+        onSuporte={handleSuporte}
       />
     );
   }

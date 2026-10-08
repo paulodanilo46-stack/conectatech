@@ -9,7 +9,9 @@ function Admin({
     onLogout,
     onCarrinho,
     onProdutos,
-    onHome
+    onHome,
+    onSobre,
+    onSuporte
 }) {
     const resumo = {
         usuarios: 25,

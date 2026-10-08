@@ -131,6 +131,8 @@ function App() {
         onCarrinho={handleCarrinho}
         onProdutos={() => setScreen("produtos")}
         onHome={() => setScreen("inicio")}
+        onSobre={handleSobre}
+        onSuporte={handleSuporte}
       />
     );
   }

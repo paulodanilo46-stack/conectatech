@@ -1,25 +1,57 @@
+/* =========================================
+   FOOTER
+   ========================================= */
+
 .footer {
     width: 100%;
-    background: #0f0f11;
+
+    background: #000000;
     color: #ffffff;
-    margin-top: 0;
+
+    padding-top: 65px;
 }
+
+
+/* =========================================
+   CONTAINER PRINCIPAL
+   ========================================= */
 
 .footer-container {
-    max-width: 1280px;
-    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
 
-    padding: 64px 80px;
+    margin: 0 auto;
+    padding: 0 30px 55px;
 
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 60px;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+
+    gap: 50px;
 }
 
 
-/* =========================
+/* =========================================
+   COLUNAS
+   ========================================= */
+
+.footer-coluna {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-coluna h3 {
+    margin: 0 0 20px;
+
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+/* =========================================
    MARCA
-========================= */
+   ========================================= */
 
 .footer-marca {
     max-width: 320px;
@@ -28,7 +60,9 @@
 .footer-logo {
     display: flex;
     align-items: center;
+
     gap: 10px;
+
     margin-bottom: 18px;
 }
 
@@ -40,25 +74,26 @@
     align-items: center;
     justify-content: center;
 
-    background: #00c853;
-    color: #ffffff;
+    background: #00d44a;
+    color: #000000;
 
     border-radius: 8px;
 
-    font-size: 21px;
+    font-size: 20px;
     font-weight: 800;
 }
 
 .footer-logo h2 {
     margin: 0;
 
-    font-size: 24px;
-    font-weight: 700;
     color: #ffffff;
+
+    font-size: 25px;
+    font-weight: 700;
 }
 
 .footer-logo h2 span {
-    color: #00c853;
+    color: #00d44a;
 }
 
 .footer-marca p {
@@ -67,31 +102,18 @@
     color: #999999;
 
     font-size: 14px;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 
-/* =========================
-   COLUNAS
-========================= */
-
-.footer-coluna {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.footer-coluna h3 {
-    margin: 0 0 22px;
-
-    color: #ffffff;
-
-    font-size: 15px;
-    font-weight: 700;
-}
+/* =========================================
+   LINKS
+   ========================================= */
 
 .footer-coluna a {
-    margin-bottom: 14px;
+    width: fit-content;
+
+    margin-bottom: 12px;
 
     color: #999999;
 
@@ -102,23 +124,28 @@
 }
 
 .footer-coluna a:hover {
-    color: #00c853;
+    color: #00d44a;
 }
 
 
-/* =========================
+/* =========================================
    REDES SOCIAIS
-========================= */
+   ========================================= */
+
+.footer-redes-coluna {
+    align-items: flex-start;
+}
 
 .footer-redes {
     display: flex;
     align-items: center;
-    gap: 14px;
+
+    gap: 12px;
 }
 
 .footer-redes a {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
 
     margin: 0;
 
@@ -126,61 +153,61 @@
     align-items: center;
     justify-content: center;
 
-    border: 1px solid #333333;
+    background: #151515;
+
+    border: 1px solid #292929;
     border-radius: 8px;
 
     color: #ffffff;
 
-    transition:
-        background 0.2s ease,
-        border-color 0.2s ease,
-        color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .footer-redes a:hover {
-    background: #00c853;
-    border-color: #00c853;
-    color: #ffffff;
+    background: #00d44a;
+    border-color: #00d44a;
+
+    color: #000000;
+
+    transform: translateY(-2px);
 }
 
 
-/* =========================
+/* =========================================
    PARTE INFERIOR
-========================= */
+   ========================================= */
 
 .footer-bottom {
-    max-width: 1280px;
-    margin: 0 auto;
+    width: 100%;
 
-    padding: 22px 80px;
+    padding: 22px 30px;
 
-    border-top: 1px solid #292929;
+    border-top: 1px solid #222222;
 
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+
     gap: 20px;
 }
 
 .footer-bottom p {
     margin: 0;
 
-    color: #777777;
+    color: #666666;
 
     font-size: 12px;
 }
 
 
-/* =========================
-   RESPONSIVO
-========================= */
+/* =========================================
+   RESPONSIVIDADE
+   ========================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
 
     .footer-container {
         grid-template-columns: 1fr 1fr;
-
-        padding: 50px 40px;
 
         gap: 40px;
     }
@@ -189,25 +216,29 @@
         max-width: 100%;
     }
 
-    .footer-bottom {
-        padding: 20px 40px;
-
-        flex-direction: column;
-        align-items: flex-start;
-    }
 }
 
 
 @media (max-width: 600px) {
 
+    .footer {
+        padding-top: 50px;
+    }
+
     .footer-container {
         grid-template-columns: 1fr;
 
-        padding: 40px 24px;
+        padding: 0 25px 45px;
+
+        gap: 35px;
     }
 
     .footer-bottom {
-        padding: 20px 24px;
+        padding: 20px 25px;
+
+        flex-direction: column;
+
+        text-align: center;
     }
 
 }

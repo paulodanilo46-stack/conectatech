@@ -9,7 +9,9 @@ function Suporte({
     onLogout,
     onCarrinho,
     onProdutos,
-    onHome
+    onHome,
+    onSobre,
+    onSuporte
 }) {
     return (
         <>
@@ -112,7 +114,10 @@ function Suporte({
 
             </main>
 
-            <Footer />
+            <Footer
+                onSobre={onSobre}
+                onSuporte={onSuporte}
+            />
         </>
     );
 }

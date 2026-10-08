@@ -9,7 +9,9 @@ function Sobre({
     onLogout,
     onCarrinho,
     onProdutos,
-    onHome
+    onHome,
+    onSobre,
+    onSuporte
 }) {
     return (
         <>
@@ -76,23 +78,56 @@ function Sobre({
                 </section>
 
                 <section className="sobre-destaque">
-                    <div>
-                        <span className="subtitulo">CONHEÇA A CONECTATECH</span>
+
+                    <div className="sobre-destaque-conteudo">
+
+                        <span className="subtitulo">
+                            CONHEÇA A CONECTATECH
+                        </span>
 
                         <h2>
-                            Tecnologia, praticidade e organização.
+                            Tecnologia que conecta,
+                            <span> inovação que transforma.</span>
                         </h2>
 
                         <p>
-                            Nossa plataforma foi pensada para aproximar pessoas
-                            da tecnologia de maneira simples e acessível.
+                            A ConectaTech nasceu com o propósito de tornar a tecnologia
+                            mais acessível, prática e presente no dia a dia das pessoas.
                         </p>
+
+                        <p>
+                            Reunimos produtos de tecnologia em um único espaço,
+                            proporcionando uma experiência simples, organizada e segura
+                            para nossos clientes.
+                        </p>
+
                     </div>
+
+                    <div className="sobre-destaque-card">
+
+                        <strong>ConectaTech</strong>
+
+                        <span>
+                            Tecnologia para sua rotina.
+                        </span>
+
+                        <div className="sobre-destaque-linha"></div>
+
+                        <p>
+                            Conectando pessoas,
+                            produtos e inovação.
+                        </p>
+
+                    </div>
+
                 </section>
 
             </main>
 
-            <Footer />
+            <Footer
+                onSobre={onSobre}
+                onSuporte={onSuporte}
+            />
         </>
     );
 }

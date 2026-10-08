@@ -10,7 +10,9 @@ function Perfil({
     onLogout,
     onCarrinho,
     onProdutos,
-    onHome
+    onHome,
+    onSobre,
+    onSuporte
 }) {
     return (
         <div className="perfil-page">

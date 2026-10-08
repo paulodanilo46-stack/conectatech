@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Login from "./pages/Login.jsx";
 import Cadastro from "./pages/Cadastro.jsx";
 import TelaInicial from "./pages/TelaInicial.jsx";
@@ -17,6 +17,13 @@ function App() {
   const [screen, setScreen] = useState("inicio");
   const [estaLogado, setEstaLogado] = useState(false);
   const [mostrarPopup, setMostrarPopup] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }, [screen]);
 
   const handleLoginSucesso = () => {
     setEstaLogado(true);
@@ -92,6 +99,8 @@ function App() {
         onProdutos={() => setScreen("produtos")}
         onHome={() => setScreen("inicio")}
         onFinalizarCompra={handleFinalizarCompra}
+        onSobre={handleSobre}
+        onSuporte={handleSuporte}
       />
     );
   }
@@ -105,6 +114,8 @@ function App() {
         onCarrinho={() => setScreen("carrinho")}
         onProdutos={() => setScreen("produtos")}
         onHome={() => setScreen("inicio")}
+        onSobre={handleSobre}
+        onSuporte={handleSuporte}
       />
     );
   }

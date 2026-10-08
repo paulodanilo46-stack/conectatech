@@ -1,0 +1,164 @@
+.pedidos-page {
+    min-height: 70vh;
+    padding: 70px 7%;
+    background: #f7f7f7;
+}
+
+.pedidos-topo {
+    margin-bottom: 35px;
+}
+
+.pedidos-topo h1 {
+    margin: 8px 0 10px;
+    font-size: 36px;
+    color: #111;
+}
+
+.pedidos-topo p {
+    margin: 0;
+    color: #777;
+    font-size: 15px;
+}
+
+.pedidos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1000px;
+}
+
+.pedido-card {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 14px;
+    padding: 24px;
+}
+
+.pedido-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.pedido-label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #777;
+}
+
+.pedido-cabecalho h2 {
+    margin: 0 0 5px;
+    font-size: 22px;
+    color: #111;
+}
+
+.pedido-cabecalho p {
+    margin: 0;
+    font-size: 13px;
+    color: #777;
+}
+
+.pedido-status {
+    padding: 7px 14px;
+    border-radius: 20px;
+    background: #e9f9ef;
+    color: #00a83a;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.pedido-conteudo {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 30px;
+    padding: 22px 0;
+}
+
+.pedido-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.pedido-item strong {
+    font-size: 15px;
+    color: #111;
+}
+
+.pedido-item p {
+    margin: 5px 0 0;
+    font-size: 13px;
+    color: #777;
+}
+
+.pedido-item > span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111;
+}
+
+.pedido-resumo {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.pedido-resumo div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.pedido-resumo span {
+    font-size: 13px;
+    color: #777;
+}
+
+.pedido-resumo strong {
+    font-size: 15px;
+    color: #111;
+}
+
+.pedido-detalhes {
+    border: none;
+    border-radius: 8px;
+    padding: 11px 20px;
+    background: #111;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.pedido-detalhes:hover {
+    opacity: 0.85;
+}
+
+@media (max-width: 700px) {
+
+    .pedidos-page {
+        padding: 50px 5%;
+    }
+
+    .pedidos-topo h1 {
+        font-size: 30px;
+    }
+
+    .pedido-cabecalho {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .pedido-conteudo {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+}

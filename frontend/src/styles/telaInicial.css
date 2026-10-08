@@ -387,9 +387,45 @@
     transform: translateY(0);
   }
 }
-/* =========================
-   RESPONSIVIDADE
-   ========================= */
+
+.acessos-extras {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.acesso-card {
+    padding: 30px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.acesso-card h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.acesso-card p {
+    margin-bottom: 20px;
+}
+
+.acesso-card button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .acessos-extras {
+        grid-template-columns: 1fr;
+    }
+}
+/* RESPONSIVIDADE */
 
 /* TABLET */
 @media (max-width: 900px) {

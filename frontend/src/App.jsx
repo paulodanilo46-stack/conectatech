@@ -6,6 +6,8 @@ import Perfil from "./pages/Perfil.jsx";
 import Carrinho from "./pages/Carrinho.jsx";
 import Produtos from "./pages/Produtos.jsx";
 import FinalizarCompra from "./pages/FinalizarCompra.jsx";
+import Pedidos from "./pages/Pedidos.jsx";
+import Admin from "./pages/Admin.jsx";
 import "./App.css";
 
 function App() {
@@ -40,6 +42,19 @@ function App() {
   const handlePerfil = () => {
     setScreen("perfil");
   };
+
+  const handlePedidos = () => {
+    if (estaLogado) {
+      setScreen("pedidos");
+    } else {
+      setScreen("login");
+    }
+  };
+
+  const handleAdmin = () => {
+    setScreen("admin");
+  };
+
   if (screen === "login") {
     return (
       <Login
@@ -110,6 +125,27 @@ function App() {
       />
     );
   }
+  if (screen === "pedidos") {
+    return (
+      <Pedidos
+        estaLogado={estaLogado}
+        onHome={() => setScreen("inicio")}
+        onPerfil={handlePerfil}
+        onCarrinho={handleCarrinho}
+        onProdutos={() => setScreen("produtos")}
+        onLogout={handleLogout}
+      />
+    );
+  }
+
+  if (screen === "admin") {
+    return (
+      <Admin
+        onHome={() => setScreen("inicio")}
+      />
+    );
+  }
+
   return (
     <TelaInicial
       estaLogado={estaLogado}
@@ -118,7 +154,9 @@ function App() {
       onLogout={handleLogout}
       onCarrinho={handleCarrinho}
       mostrarPopup={mostrarPopup}
-      onProdutos={() => setScreen("produtos")}
+      onProdutos={() => setScreen("produtos")} 
+      onPedidos={handlePedidos}
+      onAdmin={handleAdmin}
       onHome={() => setScreen("inicio")}
     />
   );

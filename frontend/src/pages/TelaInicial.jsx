@@ -25,6 +25,8 @@ function TelaInicial({
     onCarrinho,
     mostrarPopup,
     onProdutos,
+    onPedidos,
+    onAdmin,
     onHome
 }) {
     return (
@@ -36,7 +38,9 @@ function TelaInicial({
                 onLogout={onLogout}
                 onCarrinho={onCarrinho}
                 onProdutos={onProdutos}
-                onHome={() => setScreen("inicio")}
+                onPedidos={onPedidos}
+                onAdmin={onAdmin}
+                onHome={onHome}
             />
 
             {mostrarPopup && (
@@ -321,7 +325,21 @@ function TelaInicial({
                 </div>
 
             </section>
+            <section className="acessos-extras">
 
+                <div className="acesso-card">
+                    <h2>Meus Pedidos</h2>
+
+                    <p>
+                        Consulte seus pedidos e acompanhe o status das compras.
+                    </p>
+
+                    <button onClick={onPedidos}>
+                        Ver meus pedidos
+                    </button>
+                </div>
+
+            </section>
             <Footer />
 
         </>

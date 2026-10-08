@@ -1,5 +1,3 @@
-import { PlayCircle } from "lucide-react";
-
 import {
     FaFacebookF,
     FaInstagram,
@@ -9,7 +7,10 @@ import {
 
 import "../styles/footer.css";
 
-function Footer() {
+function Footer({
+    onSobre,
+    onSuporte
+}) {
     return (
         <footer className="footer">
 
@@ -53,9 +54,29 @@ function Footer() {
 
                     <h3>Institucional</h3>
 
-                    <a href="#">Sobre Nós</a>
-                    <a href="#">Contato</a>
-                    <a href="#">Políticas</a>
+                    <a
+                        href="#"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            onSobre();
+                        }}
+                    >
+                        Sobre Nós
+                    </a>
+
+                    <a
+                        href="#"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            onSuporte();
+                        }}
+                    >
+                        Suporte
+                    </a>
+
+                    <a href="#">
+                        Políticas
+                    </a>
 
                 </div>
 

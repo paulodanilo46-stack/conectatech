@@ -27,7 +27,9 @@ function TelaInicial({
     onProdutos,
     onPedidos,
     onAdmin,
-    onHome
+    onHome,
+    onSobre,
+    onSuporte
 }) {
     return (
         <>
@@ -340,7 +342,10 @@ function TelaInicial({
                 </div>
 
             </section>
-            <Footer />
+            <Footer
+                onSobre={onSobre}
+                onSuporte={onSuporte}
+            />
 
         </>
     );

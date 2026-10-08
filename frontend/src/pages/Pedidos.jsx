@@ -9,7 +9,9 @@ function Pedidos({
     onLogout,
     onCarrinho,
     onProdutos,
-    onHome
+    onHome,
+    onSobre,
+    onSuporte
 }) {
     const pedidos = [
         {
@@ -170,7 +172,10 @@ function Pedidos({
 
             </main>
 
-            <Footer />
+            <Footer
+                onSobre={onSobre}
+                onSuporte={onSuporte}
+            />
         </>
     );
 }

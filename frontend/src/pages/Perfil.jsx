@@ -149,7 +149,10 @@ function Perfil({
                 </div>
 
             </main>
-            <Footer />
+            <Footer
+                onSobre={onSobre}
+                onSuporte={onSuporte}
+            />
         </div>
     );
 }

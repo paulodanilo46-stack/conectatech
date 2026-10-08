@@ -16,7 +16,9 @@ function Produtos({
     onLogout,
     onCarrinho,
     onProdutos,
-    onHome
+    onHome,
+    onSobre,
+    onSuporte
 }) {
     const produtos = [
         {
@@ -230,7 +232,10 @@ function Produtos({
                 </div>
 
             </main>
-            <Footer />
+            <Footer
+                onSobre={onSobre}
+                onSuporte={onSuporte}
+            />
         </div>
     );
 }

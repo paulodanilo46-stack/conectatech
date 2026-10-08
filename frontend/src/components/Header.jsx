@@ -40,8 +40,7 @@ function Header({
         >
           Produtos
         </a>
-        <a href="#">Sobre</a>
-        <a href="#">Suporte</a>
+        
       </nav>
 
       <div className="search">

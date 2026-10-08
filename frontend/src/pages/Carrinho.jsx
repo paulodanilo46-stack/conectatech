@@ -12,7 +12,9 @@ function Carrinho({
   onCarrinho,
   onProdutos,
   onHome,
-  onFinalizarCompra
+  onFinalizarCompra,
+  onSobre,
+  onSuporte
 }) {
 
   const [produtos, setProdutos] = useState([
@@ -273,7 +275,10 @@ function Carrinho({
         </div>
 
       </main>
-      <Footer />
+      <Footer
+        onSobre={onSobre}
+        onSuporte={onSuporte}
+      />
     </div>
 
   );

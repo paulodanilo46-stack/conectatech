@@ -1,0 +1,152 @@
+.suporte-page {
+    min-height: 70vh;
+    background: #f7f7f7;
+}
+
+.suporte-topo {
+    padding: 70px 7%;
+    background: #ffffff;
+}
+
+.suporte-topo h1 {
+    margin: 8px 0 12px;
+    font-size: 42px;
+    color: #111;
+}
+
+.suporte-topo p {
+    max-width: 700px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+}
+
+.suporte-opcoes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    padding: 60px 7%;
+}
+
+.suporte-card {
+    padding: 28px;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 14px;
+    transition: 0.2s ease;
+}
+
+.suporte-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.suporte-card h2 {
+    margin: 0 0 12px;
+    font-size: 21px;
+    color: #111;
+}
+
+.suporte-card p {
+    min-height: 70px;
+    margin: 0 0 22px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #777;
+}
+
+.suporte-card button {
+    border: none;
+    border-radius: 8px;
+    padding: 11px 18px;
+    background: #111;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.suporte-card button:hover {
+    background: #00d44a;
+}
+
+.suporte-contato {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    padding: 60px 7%;
+    background: #111;
+    color: #ffffff;
+}
+
+.suporte-contato h2 {
+    margin: 10px 0 12px;
+    font-size: 32px;
+}
+
+.suporte-contato p {
+    max-width: 600px;
+    margin: 0;
+    color: #cccccc;
+    line-height: 1.7;
+}
+
+.suporte-contato .subtitulo {
+    color: #00d44a;
+}
+
+.suporte-informacoes {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    justify-content: center;
+}
+
+.suporte-informacoes div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.suporte-informacoes span {
+    font-size: 13px;
+    color: #999;
+}
+
+.suporte-informacoes strong {
+    font-size: 15px;
+    color: #ffffff;
+}
+
+@media (max-width: 900px) {
+
+    .suporte-opcoes {
+        grid-template-columns: 1fr;
+    }
+
+    .suporte-contato {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .suporte-topo {
+        padding: 50px 5%;
+    }
+
+    .suporte-topo h1 {
+        font-size: 32px;
+    }
+
+    .suporte-opcoes {
+        padding: 50px 5%;
+    }
+
+    .suporte-contato {
+        padding: 50px 5%;
+    }
+
+}

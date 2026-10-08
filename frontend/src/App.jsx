@@ -8,6 +8,9 @@ import Produtos from "./pages/Produtos.jsx";
 import FinalizarCompra from "./pages/FinalizarCompra.jsx";
 import Pedidos from "./pages/Pedidos.jsx";
 import Admin from "./pages/Admin.jsx";
+import Sobre from "./pages/Sobre.jsx";
+import Suporte from "./pages/Suporte.jsx";
+
 import "./App.css";
 
 function App() {
@@ -50,7 +53,13 @@ function App() {
       setScreen("login");
     }
   };
+  const handleSobre = () => {
+    setScreen("sobre");
+  };
 
+  const handleSuporte = () => {
+    setScreen("suporte");
+  };
   const handleAdmin = () => {
     setScreen("admin");
   };
@@ -145,6 +154,33 @@ function App() {
       />
     );
   }
+  if (screen === "sobre") {
+    return (
+      <Sobre
+        estaLogado={estaLogado}
+        onLogin={() => setScreen("login")}
+        onPerfil={handlePerfil}
+        onLogout={handleLogout}
+        onCarrinho={handleCarrinho}
+        onProdutos={() => setScreen("produtos")}
+        onHome={() => setScreen("inicio")}
+      />
+    );
+  }
+
+  if (screen === "suporte") {
+    return (
+      <Suporte
+        estaLogado={estaLogado}
+        onLogin={() => setScreen("login")}
+        onPerfil={handlePerfil}
+        onLogout={handleLogout}
+        onCarrinho={handleCarrinho}
+        onProdutos={() => setScreen("produtos")}
+        onHome={() => setScreen("inicio")}
+      />
+    );
+  }
 
   return (
     <TelaInicial
@@ -154,10 +190,12 @@ function App() {
       onLogout={handleLogout}
       onCarrinho={handleCarrinho}
       mostrarPopup={mostrarPopup}
-      onProdutos={() => setScreen("produtos")} 
+      onProdutos={() => setScreen("produtos")}
       onPedidos={handlePedidos}
       onAdmin={handleAdmin}
       onHome={() => setScreen("inicio")}
+      onSobre={handleSobre}
+      onSuporte={handleSuporte}
     />
   );
 }

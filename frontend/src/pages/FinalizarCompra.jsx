@@ -9,7 +9,9 @@ function FinalizarCompra({
   onLogout,
   onCarrinho,
   onProdutos,
-  onHome
+  onHome,
+  onSobre,
+  onSuporte
 }) {
   return (
     <div className="finalizar-page">
@@ -238,7 +240,10 @@ function FinalizarCompra({
         </div>
 
       </main>
-      <Footer />
+      <Footer
+        onSobre={onSobre}
+        onSuporte={onSuporte}
+      />
     </div>
   );
 }

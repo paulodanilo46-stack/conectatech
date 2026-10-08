@@ -150,7 +150,10 @@ function Admin({
 
             </main>
 
-            <Footer />
+            <Footer
+                onSobre={onSobre}
+                onSuporte={onSuporte}
+            />
         </>
     );
 }

@@ -10,6 +10,7 @@ function Admin({
     onCarrinho,
     onProdutos,
     onHome,
+    onPedidos,
     onSobre,
     onSuporte
 }) {
@@ -30,6 +31,9 @@ function Admin({
                 onCarrinho={onCarrinho}
                 onProdutos={onProdutos}
                 onHome={onHome}
+                onPedidos={onPedidos}
+                onSobre={onSobre}
+                onSuporte={onSuporte}
             />
 
             <main className="admin-page">

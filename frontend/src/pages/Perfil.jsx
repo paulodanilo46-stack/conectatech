@@ -11,6 +11,7 @@ function Perfil({
     onCarrinho,
     onProdutos,
     onHome,
+    onPedidos,
     onSobre,
     onSuporte
 }) {
@@ -24,6 +25,9 @@ function Perfil({
                 onCarrinho={onCarrinho}
                 onProdutos={onProdutos}
                 onHome={onHome}
+                onPedidos={onPedidos}
+                onSobre={onSobre}
+                onSuporte={onSuporte}
             />
             {/* Conteúdo principal */}
             <main className="perfil-container">

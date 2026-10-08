@@ -13,6 +13,7 @@ function Carrinho({
   onProdutos,
   onHome,
   onFinalizarCompra,
+  onPedidos,
   onSobre,
   onSuporte
 }) {
@@ -91,6 +92,9 @@ function Carrinho({
         onCarrinho={onCarrinho}
         onProdutos={onProdutos}
         onHome={onHome}
+        onPedidos={onPedidos}
+        onSobre={onSobre}
+        onSuporte={onSuporte}
       />
 
       <main className="carrinho-container">

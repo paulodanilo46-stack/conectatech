@@ -17,6 +17,7 @@ function Produtos({
     onCarrinho,
     onProdutos,
     onHome,
+    onPedidos,
     onSobre,
     onSuporte
 }) {
@@ -82,6 +83,9 @@ function Produtos({
                 onCarrinho={onCarrinho}
                 onProdutos={onProdutos}
                 onHome={onHome}
+                onPedidos={onPedidos}
+                onSobre={onSobre}
+                onSuporte={onSuporte}
             />
 
             <main className="produtos-container">

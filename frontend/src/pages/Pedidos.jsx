@@ -10,6 +10,7 @@ function Pedidos({
     onCarrinho,
     onProdutos,
     onHome,
+    onPedidos,
     onSobre,
     onSuporte
 }) {
@@ -56,6 +57,9 @@ function Pedidos({
                 onCarrinho={onCarrinho}
                 onProdutos={onProdutos}
                 onHome={onHome}
+                onPedidos={onPedidos}
+                onSobre={onSobre}
+                onSuporte={onSuporte}
             />
 
             <main className="pedidos-page">

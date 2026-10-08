@@ -10,6 +10,7 @@ function FinalizarCompra({
   onCarrinho,
   onProdutos,
   onHome,
+  onPedidos,
   onSobre,
   onSuporte
 }) {
@@ -24,6 +25,9 @@ function FinalizarCompra({
         onCarrinho={onCarrinho}
         onProdutos={onProdutos}
         onHome={onHome}
+        onPedidos={onPedidos}
+        onSobre={onSobre}
+        onSuporte={onSuporte}
       />
 
       <main className="finalizar-container">

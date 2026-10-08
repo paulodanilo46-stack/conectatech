@@ -1,16 +1,18 @@
-.header{
-    width:100%;
-    height:80px;
+.header {
+    width: 100%;
+    height: 80px;
 
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+    padding: 0 40px;
 
-    padding:0 70px;
+    display: flex;
+    align-items: center;
 
-    background:#ffffff;
+    background: #ffffff;
 
-    box-sizing:border-box;
+    position: relative;
+    z-index: 1000;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .logo{
@@ -154,9 +156,154 @@
 .menu-link:hover {
   color: #2563eb;
 }
-/* =========================
+/* =========================================
+   BOTÃO DO MENU
+   ========================================= */
+
+.menu-button {
+    border: none;
+    background: transparent;
+
+    padding: 4px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #111111;
+
+    cursor: pointer;
+
+    transition: color 0.2s ease;
+}
+
+.menu-button:hover {
+    color: #00d44a;
+}
+
+
+/* =========================================
+   MENU SUSPENSO
+   ========================================= */
+
+.menu-dropdown {
+    position: absolute;
+
+    top: calc(100% + 10px);
+    right: 30px;
+
+    width: 250px;
+
+    padding: 10px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+    z-index: 2000;
+}
+
+
+/* =========================================
+   TÍTULO DO MENU
+   ========================================= */
+
+.menu-dropdown-titulo {
+    padding: 12px 14px 10px;
+
+    color: #111111;
+
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   OPÇÕES
+   ========================================= */
+
+.menu-dropdown button {
+    width: 100%;
+
+    padding: 11px 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: transparent;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    color: #333333;
+
+    font-size: 14px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.menu-dropdown button:hover {
+    background: #f2f2f2;
+
+    color: #00a83a;
+}
+
+.menu-dropdown button svg {
+    flex-shrink: 0;
+}
+
+
+/* =========================================
+   SEPARADORES
+   ========================================= */
+
+.menu-separador {
+    width: 100%;
+
+    height: 1px;
+
+    margin: 8px 0;
+
+    background: #eeeeee;
+}
+
+
+/* =========================================
+   BOTÃO SAIR
+   ========================================= */
+
+.menu-dropdown .menu-sair {
+    color: #d62828;
+}
+
+.menu-dropdown .menu-sair:hover {
+    background: #fff1f1;
+    color: #c01818;
+}
+
+
+/* =========================================
+   LOGO CLICÁVEL
+   ========================================= */
+
+.logo {
+    cursor: pointer;
+}
+
+/*
    RESPONSIVIDADE
-   ========================= */
+    */
 
 /* TABLET */
 @media (max-width: 1100px) {

@@ -43,6 +43,8 @@ function TelaInicial({
                 onPedidos={onPedidos}
                 onAdmin={onAdmin}
                 onHome={onHome}
+                onSobre={onSobre}
+                onSuporte={onSuporte}
             />
 
             {mostrarPopup && (

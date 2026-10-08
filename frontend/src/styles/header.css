@@ -1,14 +1,13 @@
 .header {
     width: 100%;
     height: 80px;
-
     padding: 0 40px;
 
     display: flex;
     align-items: center;
+    gap: 35px;
 
     background: #ffffff;
-
     position: relative;
     z-index: 1000;
 
@@ -207,9 +206,7 @@
 }
 
 
-/* =========================================
-   TÍTULO DO MENU
-   ========================================= */
+/*TÍTULO DO MENU*/
 
 .menu-dropdown-titulo {
     padding: 12px 14px 10px;

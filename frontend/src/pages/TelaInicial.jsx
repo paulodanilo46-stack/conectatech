@@ -60,10 +60,6 @@ function TelaInicial({
 
                     <div className="hero-content">
 
-                        <span className="tag">
-                            NOVIDADES DA SEMANA
-                        </span>
-
                         <h1>
                             Eleve sua performance <br />
                             digital hoje

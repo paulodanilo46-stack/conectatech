@@ -10,6 +10,7 @@ function Sobre({
     onCarrinho,
     onProdutos,
     onHome,
+    onCategoria,
     onPedidos,
     onSobre,
     onSuporte
@@ -131,6 +132,7 @@ function Sobre({
             <Footer
                 onSobre={onSobre}
                 onSuporte={onSuporte}
+                onCategoria={onCategoria}
             />
         </>
     );

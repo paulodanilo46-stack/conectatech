@@ -343,3 +343,121 @@
     }
 
 }
+/* BOTÃO PARA LIMPAR FILTROS */
+
+.filtros button {
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #374151;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filtros button:hover {
+    background: #f3f4f6;
+}
+
+/* MENSAGENS DA LISTAGEM */
+
+.produtos-mensagem {
+    margin: 20px 0;
+    padding: 18px;
+    border-radius: 10px;
+    line-height: 1.6;
+}
+
+.produtos-mensagem.erro {
+    border: 1px solid #f5c2c7;
+    background: #f8d7da;
+    color: #842029;
+}
+
+.produtos-mensagem button {
+    margin-top: 10px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.produtos-mensagem button:hover {
+    background: #1d4ed8;
+}
+
+/* SEÇÃO DE CATEGORIAS RECOLHÍVEL */
+
+.filtro-categorias {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.filtro-categorias-titulo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid #e5e7eb;
+    background: transparent;
+    color: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+}
+
+.filtro-categorias-titulo:hover {
+    opacity: 0.8;
+}
+
+.categorias-contador {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.categorias-seta {
+    font-size: 22px;
+    line-height: 1;
+}
+
+.filtro-categorias-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 0 4px;
+}
+
+.filtro-categorias-lista label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.filtro-categorias-lista input[type="checkbox"] {
+    flex-shrink: 0;
+}
+
+.mensagem-carrinho {
+    margin: 12px 0;
+    padding: 12px 16px;
+    border: 1px solid #a7d7b5;
+    border-radius: 8px;
+    background-color: #eaf7ed;
+    color: #216e39;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.mensagem-carrinho-erro {
+    border-color: #f1aeb5;
+    background-color: #f8d7da;
+    color: #842029;
+}

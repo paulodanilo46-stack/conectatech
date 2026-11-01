@@ -54,6 +54,34 @@ const listarItens = async (carrinhoId) => {
     return resultado.rows;
 };
 
+const listarItensSelecionados = async (
+    carrinhoId,
+    itensIds,
+    db = pool
+) => {
+    const resultado = await db.query(
+        `SELECT
+            ic.id,
+            ic.carrinho_id,
+            ic.produto_id,
+            p.nome,
+            p.preco,
+            p.ativo,
+            p.estoque,
+            ic.quantidade
+         FROM itens_carrinho ic
+         INNER JOIN produtos p
+             ON p.id = ic.produto_id
+         WHERE ic.carrinho_id = $1
+         AND ic.id = ANY($2::int[])
+         ORDER BY ic.id
+         FOR UPDATE OF ic, p`,
+        [carrinhoId, itensIds]
+    );
+
+    return resultado.rows;
+};
+
 const buscarItem = async (carrinhoId, produtoId) => {
     const resultado = await pool.query(
         `SELECT *
@@ -124,6 +152,7 @@ const limpar = async (carrinhoId) => {
 module.exports = {
     buscarOuCriar,
     listarItens,
+    listarItensSelecionados,
     buscarItem,
     buscarItemDoCarrinho,
     adicionarItem,

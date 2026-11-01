@@ -19,6 +19,8 @@ import {
 
 function TelaInicial({
     estaLogado,
+    quantidadeCarrinho = 0,
+    onCategoria,
     onLogin,
     onPerfil,
     onLogout,
@@ -35,6 +37,7 @@ function TelaInicial({
         <>
             <Header
                 estaLogado={estaLogado}
+                quantidadeCarrinho={quantidadeCarrinho}
                 onLogin={onLogin}
                 onPerfil={onPerfil}
                 onLogout={onLogout}
@@ -343,6 +346,7 @@ function TelaInicial({
             <Footer
                 onSobre={onSobre}
                 onSuporte={onSuporte}
+                onCategoria={onCategoria}
             />
 
         </>

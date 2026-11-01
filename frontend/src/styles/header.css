@@ -5,7 +5,7 @@
 
     display: flex;
     align-items: center;
-    gap: 35px;
+    gap: 0;
 
     background: #ffffff;
     position: relative;
@@ -56,6 +56,7 @@
 
     display:flex;
     gap:40px;
+    margin-left: 40px;
 }
 
 .menu a{
@@ -74,21 +75,19 @@
     color:#00d44a;
 }
 
-.search{
+.search {
+    width: 290px;
+    height: 44px;
 
-    width:290px;
-    height:44px;
+    background: #f2f2f2;
+    border-radius: 30px;
 
-    background:#f2f2f2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
-    border-radius:30px;
-
-    display:flex;
-    align-items:center;
-
-    gap:10px;
-
-    padding:0 18px;
+    padding: 0 18px;
+    margin-left: auto;
 }
 
 .search input{
@@ -103,14 +102,12 @@
     font-size:15px;
 }
 
-.icons{
-
-    display:flex;
-    align-items:center;
-
-    gap:22px;
-
-    cursor:pointer;
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-left: 35px;
+    cursor: pointer;
 }
 
 .cart{

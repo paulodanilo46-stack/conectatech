@@ -125,3 +125,660 @@
     }
 
 }
+/* Listagem de produtos */
+
+.admin-voltar {
+    margin-bottom: 25px;
+    padding: 10px 18px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    color: #111;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.admin-voltar:hover {
+    background: #eee;
+}
+
+.admin-produtos {
+    padding: 25px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 14px;
+}
+
+.admin-produtos-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.admin-produtos-topo h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #111;
+}
+
+.admin-produtos-topo span {
+    color: #777;
+    font-size: 14px;
+}
+
+.admin-tabela-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.admin-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.admin-tabela th,
+.admin-tabela td {
+    padding: 15px 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.admin-tabela th {
+    background: #f7f7f7;
+    color: #555;
+    font-weight: 600;
+}
+
+.admin-tabela td {
+    color: #444;
+}
+
+.admin-status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.admin-status.ativo {
+    background: #e5f5e9;
+    color: #24743b;
+}
+
+.admin-status.inativo {
+    background: #fbe8e8;
+    color: #a52a2a;
+}
+
+@media (max-width: 600px) {
+    .admin-produtos {
+        padding: 15px;
+    }
+
+    .admin-produtos-topo {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+/* ========================================
+   TABELA DE PRODUTOS
+======================================== */
+
+.admin-produtos {
+    background: #ffffff;
+    border: 1px solid #e2e2e2;
+    border-radius: 16px;
+    padding: 28px;
+    margin: 28px 0 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.admin-produtos-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.admin-produtos-topo h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.admin-produtos-topo span {
+    color: #666666;
+}
+
+.admin-produtos-topo button {
+    background: #111111;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.admin-produtos-topo button:hover {
+    background: #333333;
+}
+
+/* Área que permite rolagem horizontal da tabela */
+
+.admin-tabela-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.admin-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+}
+
+.admin-tabela th,
+.admin-tabela td {
+    padding: 16px 14px;
+    text-align: left;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.admin-tabela th {
+    background: #f7f7f7;
+    color: #555555;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.admin-tabela td {
+    color: #444444;
+    font-size: 14px;
+}
+
+.admin-tabela tbody tr:hover {
+    background: #fafafa;
+}
+
+/* Situação do produto */
+
+.admin-status {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.admin-status.ativo {
+    background: #e5f5e9;
+    color: #237a3b;
+}
+
+.admin-status.inativo {
+    background: #fce8e8;
+    color: #b42318;
+}
+
+/* ========================================
+   FORMULÁRIO DE CADASTRO DE PRODUTO
+======================================== */
+
+.admin-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 750px;
+    margin: 28px auto 40px;
+    padding: 30px;
+    background: #ffffff;
+    border: 1px solid #e2e2e2;
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+
+.admin-formulario label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333333;
+    margin-top: 10px;
+}
+
+.admin-formulario input,
+.admin-formulario textarea,
+.admin-formulario select {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    box-sizing: border-box;
+    background: #ffffff;
+    color: #222222;
+}
+
+.admin-formulario textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.admin-formulario input:focus,
+.admin-formulario textarea:focus,
+.admin-formulario select:focus {
+    outline: none;
+    border-color: #222222;
+}
+
+.admin-formulario input[type="file"] {
+    cursor: pointer;
+    background: #fafafa;
+}
+
+.admin-formulario p {
+    color: #555555;
+    font-size: 13px;
+    margin: 4px 0;
+}
+
+.admin-formulario button {
+    margin-top: 20px;
+    padding: 14px;
+    background: #111111;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.admin-formulario button:hover {
+    background: #333333;
+}
+
+.admin-formulario button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Botão de voltar */
+
+.admin-voltar {
+    padding: 12px 20px;
+    background: #ffffff;
+    color: #111111;
+    border: 1px solid #dddddd;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.admin-voltar:hover {
+    background: #f1f1f1;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 768px) {
+    .admin-produtos {
+        padding: 18px;
+    }
+
+    .admin-produtos-topo {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .admin-formulario {
+        padding: 20px;
+    }
+
+    .admin-tabela th,
+    .admin-tabela td {
+        padding: 12px 10px;
+    }
+}
+/* Ações da tabela de produtos */
+
+.admin-acoes-produto {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-acoes-produto button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.admin-acao-editar {
+    color: #16a34a;
+}
+
+.admin-acao-editar:hover {
+    color: #15803d;
+    transform: scale(1.15);
+}
+
+.admin-acao-excluir {
+    color: #dc2626;
+}
+
+.admin-acao-excluir:hover {
+    color: #b91c1c;
+    transform: scale(1.15);
+}
+.admin-acao-ativar {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+.admin-acao-desativar {
+    color: #d97706;
+    font-weight: 600;
+}
+
+.admin-acao-ativar,
+.admin-acao-desativar {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 7px;
+    transition: 0.2s;
+}
+
+.admin-acao-ativar:hover,
+.admin-acao-desativar:hover {
+    transform: scale(1.05);
+}
+.admin-acao-editar {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+/* ================================
+   DETALHES DO PEDIDO
+================================ */
+
+.admin-detalhes-pedido {
+    margin-top: 30px;
+    padding: 28px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.admin-detalhes-pedido h2 {
+    margin: 28px 0 18px;
+    color: #1f2937;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.admin-detalhes-pedido h2:first-child {
+    margin-top: 0;
+}
+
+.admin-detalhes-pedido p {
+    margin: 12px 0;
+    color: #4b5563;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.admin-detalhes-pedido p strong {
+    color: #1f2937;
+}
+
+/* Seleção do status */
+
+.admin-detalhes-pedido select {
+    width: 100%;
+    max-width: 320px;
+    padding: 12px 14px;
+    margin-top: 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #374151;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+}
+
+.admin-detalhes-pedido select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.admin-detalhes-pedido select:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Responsividade */
+
+@media (max-width: 768px) {
+    .admin-detalhes-pedido {
+        padding: 18px;
+    }
+
+    .admin-detalhes-pedido h2 {
+        font-size: 18px;
+    }
+
+    .admin-detalhes-pedido .admin-tabela-container {
+        overflow-x: auto;
+    }
+
+    .admin-detalhes-pedido select {
+        max-width: 100%;
+    }
+}
+
+/* ================================
+   RELATÓRIOS ADMINISTRATIVOS
+================================ */
+
+.admin-relatorios {
+    width: 100%;
+}
+
+.admin-relatorio-grupo {
+    margin-top: 30px;
+}
+
+.admin-relatorio-grupo h2 {
+    margin-bottom: 18px;
+    color: #1f2937;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.admin-relatorio-cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.admin-relatorio-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 24px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.admin-relatorio-card span {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.admin-relatorio-card strong {
+    color: #1f2937;
+    font-size: 26px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.admin-relatorio-lista {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.admin-relatorio-lista div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 18px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+}
+
+.admin-relatorio-lista span {
+    color: #4b5563;
+    font-size: 14px;
+}
+
+.admin-relatorio-lista strong {
+    color: #1f2937;
+    font-size: 20px;
+}
+
+.admin-relatorio-observacao {
+    margin-top: 28px;
+    color: #6b7280;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+    .admin-relatorio-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .admin-relatorio-lista {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 550px) {
+    .admin-relatorio-cards,
+    .admin-relatorio-lista {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-relatorio-card {
+        padding: 18px;
+    }
+}
+
+/* Botão para salvar relatório em PDF */
+
+.admin-salvar-pdf {
+    margin: 10px 0 20px;
+    padding: 12px 20px;
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.admin-salvar-pdf:hover {
+    background-color: #1d4ed8;
+}
+
+/* Configuração do relatório para impressão e PDF */
+
+@media print {
+
+    @page {
+        size: A4;
+        margin: 15mm;
+    }
+
+    body * {
+        visibility: hidden;
+    }
+
+    .admin-relatorios,
+    .admin-relatorios * {
+        visibility: visible;
+    }
+
+    .admin-relatorios {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+    }
+
+    .admin-voltar,
+    .admin-salvar-pdf {
+        display: none !important;
+    }
+
+    .admin-relatorio-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .admin-relatorio-lista {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .admin-relatorio-card,
+    .admin-relatorio-lista div {
+        break-inside: avoid;
+        box-shadow: none;
+    }
+
+    .admin-relatorio-grupo {
+        break-inside: avoid;
+    }
+
+    .admin-relatorios h1,
+    .admin-relatorios h2 {
+        color: #000000;
+    }
+
+    .admin-relatorio-observacao {
+        color: #444444;
+    }
+}

@@ -162,3 +162,165 @@
     }
 
 }
+.pedido-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.pedido-acompanhar {
+    padding: 11px 20px;
+    border: 1px solid #00a83a;
+    border-radius: 8px;
+    background: #fff;
+    color: #008b30;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.pedido-acompanhar:hover {
+    background: #e9f9ef;
+}
+
+.pedido-painel {
+    max-width: 1000px;
+    margin-top: 28px;
+    padding: 28px;
+    border: 1px solid #e5e5e5;
+    border-radius: 14px;
+    background: #fff;
+}
+
+.pedido-painel-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.pedido-painel-cabecalho h2 {
+    margin: 0;
+    color: #111;
+    font-size: 22px;
+}
+
+.pedido-fechar {
+    padding: 9px 16px;
+    border: 1px solid #d5d5d5;
+    border-radius: 8px;
+    background: #fff;
+    color: #333;
+    cursor: pointer;
+}
+
+.pedido-detalhes-total {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #e8e8e8;
+}
+
+.pedido-status-atual {
+    margin: 20px 0;
+}
+
+.pedido-linha-tempo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 24px;
+}
+
+.pedido-etapa {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.pedido-etapa-marcador {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    color: #777;
+    font-weight: 700;
+}
+
+.pedido-etapa.concluida .pedido-etapa-marcador {
+    border-color: #00a83a;
+    background: #00a83a;
+    color: #fff;
+}
+
+.pedido-etapa-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.pedido-etapa-texto strong {
+    color: #444;
+}
+
+.pedido-etapa.concluida .pedido-etapa-texto strong {
+    color: #111;
+}
+
+.pedido-etapa-texto span {
+    color: #008b30;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.pedido-status.status-pendente {
+    background: #fff4d6;
+    color: #946200;
+}
+
+.pedido-status.status-processando {
+    background: #e8f1ff;
+    color: #2459a9;
+}
+
+.pedido-status.status-enviado {
+    background: #eee8ff;
+    color: #6541a5;
+}
+
+.pedido-status.status-entregue {
+    background: #e9f9ef;
+    color: #008b30;
+}
+
+.pedido-status.status-cancelado {
+    background: #ffe9e9;
+    color: #b42318;
+}
+
+@media (max-width: 700px) {
+    .pedido-acoes {
+        flex-direction: column;
+    }
+
+    .pedido-acoes button {
+        width: 100%;
+    }
+
+    .pedido-painel {
+        padding: 20px 16px;
+    }
+
+    .pedido-painel-cabecalho h2 {
+        font-size: 19px;
+    }
+}

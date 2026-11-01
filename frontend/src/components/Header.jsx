@@ -17,6 +17,7 @@ import {
 
 function Header({
   estaLogado,
+  quantidadeCarrinho = 0,
   onLogin,
   onPerfil,
   onLogout,
@@ -114,15 +115,25 @@ function Header({
         <div
           className="cart"
           onClick={() => navegar(onCarrinho)}
+          role="button"
+          tabIndex={0}
+          aria-label={`Meu carrinho: ${quantidadeCarrinho} itens`}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              navegar(onCarrinho);
+            }
+          }}
         >
-
           <ShoppingCart size={22} />
 
-          <span>2</span>
-
+          {quantidadeCarrinho > 0 && (
+            <span className="cart-count">
+              {quantidadeCarrinho}
+            </span>
+          )}
         </div>
-
-
+        
         {/* MENU */}
         <button
           className="menu-button"

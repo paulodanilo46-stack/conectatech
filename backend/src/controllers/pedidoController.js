@@ -1,26 +1,45 @@
 const pool = require("../database/database");
 
 const carrinhoRepository = require("../repositories/carrinhoRepository");
-const produtoRepository = require("../repositories/produtoRepository");
 const pedidoRepository = require("../repositories/pedidoRepository");
 const enderecoRepository = require("../repositories/enderecoRepository");
 
 const criar = async (req, res) => {
     const cliente = await pool.connect();
+    let transacaoIniciada = false;
 
     try {
         const {
             endereco_id,
-            forma_pagamento
+            forma_pagamento,
+            itens
         } = req.body;
 
-        if (!endereco_id || !forma_pagamento) {
+        // 1. Validar os dados recebidos
+        if (
+            !endereco_id ||
+            !forma_pagamento ||
+            !Array.isArray(itens) ||
+            itens.length === 0
+        ) {
             return res.status(400).json({
                 mensagem:
-                    "Endereço e forma de pagamento são obrigatórios."
+                    "Endereço, forma de pagamento e itens selecionados são obrigatórios."
             });
         }
 
+        const itensIds = itens.map(Number);
+
+        if (
+            itensIds.some(id => !Number.isInteger(id) || id <= 0) ||
+            new Set(itensIds).size !== itensIds.length
+        ) {
+            return res.status(400).json({
+                mensagem: "A seleção de itens é inválida."
+            });
+        }
+
+        // 2. Verificar se o endereço pertence ao usuário
         const endereco =
             await enderecoRepository.buscarPorIdUsuario(
                 endereco_id,
@@ -34,62 +53,69 @@ const criar = async (req, res) => {
             });
         }
 
+        // 3. Buscar o carrinho do usuário
         const carrinho =
             await carrinhoRepository.buscarOuCriar(
                 req.usuario.id
             );
 
-        const itens =
-            await carrinhoRepository.listarItens(
-                carrinho.id
+        // 4. Iniciar a transação
+        await cliente.query("BEGIN");
+        transacaoIniciada = true;
+
+        // 5. Buscar somente os itens selecionados
+        const itensSelecionados =
+            await carrinhoRepository.listarItensSelecionados(
+                carrinho.id,
+                itensIds,
+                cliente
             );
 
-        if (itens.length === 0) {
-            return res.status(400).json({
-                mensagem: "O carrinho está vazio."
-            });
+        // Verificar se todos os IDs pertencem ao carrinho
+        if (itensSelecionados.length !== itensIds.length) {
+            throw new Error(
+                "Um ou mais itens selecionados não foram encontrados no carrinho."
+            );
         }
 
-        await cliente.query("BEGIN");
+        // 6. Conferir disponibilidade, estoque e calcular o total
+        let valorTotalCentavos = 0;
 
-        let valorTotal = 0;
-        const produtos = [];
+        for (const item of itensSelecionados) {
+            const quantidade = Number(item.quantidade);
+            const estoque = Number(item.estoque);
+            const preco = Number(item.preco);
 
-        for (const item of itens) {
-            const produto =
-                await produtoRepository.buscarPorId(
-                    item.produto_id
-                );
-
-            if (!produto) {
+            if (!item.ativo) {
                 throw new Error(
-                    `Produto ${item.produto_id} não encontrado.`
+                    `O produto ${item.nome} não está disponível.`
                 );
             }
 
-            if (!produto.ativo) {
+            if (quantidade > estoque) {
                 throw new Error(
-                    `O produto ${produto.nome} não está disponível.`
+                    `Estoque insuficiente para o produto ${item.nome}.`
                 );
             }
 
-            if (item.quantidade > produto.estoque) {
+            if (
+                !Number.isFinite(preco) ||
+                preco < 0 ||
+                !Number.isInteger(quantidade) ||
+                quantidade <= 0
+            ) {
                 throw new Error(
-                    `Estoque insuficiente para o produto ${produto.nome}.`
+                    `Os dados do produto ${item.nome} são inválidos.`
                 );
             }
 
-            const preco = Number(produto.preco);
-
-            valorTotal += preco * item.quantidade;
-
-            produtos.push({
-                produto,
-                quantidade: item.quantidade,
-                preco
-            });
+            valorTotalCentavos +=
+                Math.round(preco * 100) * quantidade;
         }
 
+        const valorTotal = valorTotalCentavos / 100;
+
+        // 7. Criar o pedido
         const pedido =
             await pedidoRepository.criarPedido(
                 req.usuario.id,
@@ -99,41 +125,53 @@ const criar = async (req, res) => {
                 cliente
             );
 
-        for (const item of produtos) {
-            const subtotal =
-                item.preco * item.quantidade;
-
+        // 8. Registrar os produtos e atualizar o estoque
+        for (const item of itensSelecionados) {
             await pedidoRepository.adicionarItem(
                 pedido.id,
-                item.produto.id,
-                item.quantidade,
-                item.preco,
+                item.produto_id,
+                Number(item.quantidade),
+                Number(item.preco),
                 cliente
             );
 
-            await cliente.query(
+            const atualizacaoEstoque = await cliente.query(
                 `UPDATE produtos
                  SET estoque = estoque - $1
-                 WHERE id = $2`,
+                 WHERE id = $2
+                 AND estoque >= $1
+                 RETURNING id`,
                 [
-                    item.quantidade,
-                    item.produto.id
+                    Number(item.quantidade),
+                    item.produto_id
                 ]
             );
+
+            if (atualizacaoEstoque.rowCount === 0) {
+                throw new Error(
+                    `Não foi possível atualizar o estoque do produto ${item.nome}.`
+                );
+            }
         }
 
+        // 9. Remover somente os itens comprados
         await cliente.query(
             `DELETE FROM itens_carrinho
-             WHERE carrinho_id = $1`,
-            [carrinho.id]
+             WHERE carrinho_id = $1
+             AND id = ANY($2::int[])`,
+            [carrinho.id, itensIds]
         );
 
-        await cliente.query("COMMIT");
-
+        // 10. Buscar os itens do pedido antes de finalizar a transação
         const itensPedido =
             await pedidoRepository.listarItens(
-                pedido.id
+                pedido.id,
+                cliente
             );
+
+        // 11. Confirmar a transação
+        await cliente.query("COMMIT");
+        transacaoIniciada = false;
 
         return res.status(201).json({
             mensagem: "Pedido criado com sucesso.",
@@ -144,8 +182,9 @@ const criar = async (req, res) => {
         });
 
     } catch (erro) {
-
-        await cliente.query("ROLLBACK");
+        if (transacaoIniciada) {
+            await cliente.query("ROLLBACK");
+        }
 
         console.error(erro);
 

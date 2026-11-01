@@ -60,7 +60,10 @@
 .produto-imagem {
   width: 110px;
   height: 110px;
+  min-width: 110px;
   flex-shrink: 0;
+  overflow: hidden;
+  box-sizing: border-box;
 
   display: flex;
   align-items: center;
@@ -70,6 +73,15 @@
   border-radius: 10px;
 
   color: #00c853;
+}
+
+.produto-imagem img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .produto-info {
@@ -296,4 +308,77 @@
     justify-content: flex-end;
   }
 
+}
+
+/* Área para selecionar todos os produtos */
+.selecionar-todos {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+}
+
+.selecionar-todos label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+}
+
+/* Checkbox de selecionar todos e checkbox individual */
+.selecionar-todos input[type="checkbox"],
+.produto-selecao input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #2563eb;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Área de seleção individual do produto */
+.produto-selecao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+}
+
+/* Realce visual ao passar o mouse pelo produto */
+.produto-carrinho {
+  transition: background-color 0.2s ease;
+}
+
+.produto-carrinho:hover {
+  background-color: #f9fafb;
+}
+
+/* Estado de foco dos checkboxes para acessibilidade */
+.selecionar-todos input[type="checkbox"]:focus-visible,
+.produto-selecao input[type="checkbox"]:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 600px) {
+  .selecionar-todos {
+    padding: 14px;
+  }
+
+  .selecionar-todos label {
+    font-size: 13px;
+  }
+
+  .produto-selecao {
+    padding: 0 4px;
+  }
+
+  .produto-selecao input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+  }
 }

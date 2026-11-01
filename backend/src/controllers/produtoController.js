@@ -1,4 +1,40 @@
+
 const produtoRepository = require("../repositories/produtoRepository");
+const supabase = require("../config/supabaseStorage");
+const crypto = require("crypto");
+
+const enviarImagemSupabase = async (arquivo) => {
+    const extensoes = {
+        "image/jpeg": "jpg",
+        "image/png": "png",
+        "image/webp": "webp"
+    };
+
+    const extensao = extensoes[arquivo.mimetype];
+
+    if (!extensao) {
+        throw new Error("Formato de imagem não permitido.");
+    }
+
+    const nomeArquivo = `${crypto.randomUUID()}.${extensao}`;
+
+    const { error } = await supabase.storage
+        .from("produtos")
+        .upload(nomeArquivo, arquivo.buffer, {
+            contentType: arquivo.mimetype,
+            upsert: false
+        });
+
+    if (error) {
+        throw error;
+    }
+
+    const { data } = supabase.storage
+        .from("produtos")
+        .getPublicUrl(nomeArquivo);
+
+    return data.publicUrl;
+};
 
 const listar = async (req, res) => {
     try {
@@ -54,12 +90,18 @@ const criar = async (req, res) => {
             });
         }
 
+        let imagemUrl = imagem || null;
+
+        if (req.file) {
+            imagemUrl = await enviarImagemSupabase(req.file);
+        }
+
         const produto = await produtoRepository.criar({
             nome,
             descricao,
             preco,
             categoria_id,
-            imagem,
+            imagem: imagemUrl,
             avaliacao,
             estoque
         });
@@ -93,6 +135,22 @@ const atualizar = async (req, res) => {
             });
         }
 
+        const produtoAtual = await produtoRepository.buscarPorId(
+            req.params.id
+        );
+
+        if (!produtoAtual) {
+            return res.status(404).json({
+                mensagem: "Produto não encontrado."
+            });
+        }
+
+        let imagemUrl = imagem ?? produtoAtual.imagem;
+
+        if (req.file) {
+            imagemUrl = await enviarImagemSupabase(req.file);
+        }
+
         const produto = await produtoRepository.atualizar(
             req.params.id,
             {
@@ -100,18 +158,12 @@ const atualizar = async (req, res) => {
                 descricao,
                 preco,
                 categoria_id,
-                imagem,
+                imagem: imagemUrl,
                 avaliacao,
                 estoque,
                 ativo
             }
         );
-
-        if (!produto) {
-            return res.status(404).json({
-                mensagem: "Produto não encontrado."
-            });
-        }
 
         return res.status(200).json(produto);
     } catch (erro) {

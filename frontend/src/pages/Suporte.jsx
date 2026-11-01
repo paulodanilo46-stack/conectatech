@@ -8,6 +8,7 @@ function Suporte({
     onPerfil,
     onLogout,
     onCarrinho,
+    onCategoria,
     onProdutos,
     onHome,
     onPedidos,
@@ -54,7 +55,7 @@ function Suporte({
                             pagamentos e acompanhamento da entrega.
                         </p>
 
-                        <button>
+                        <button onClick={onPedidos}>
                             Consultar pedidos
                         </button>
                     </div>
@@ -67,7 +68,7 @@ function Suporte({
                             Consulte nossa área de produtos.
                         </p>
 
-                        <button>
+                        <button onClick={onProdutos}>
                             Ver produtos
                         </button>
                     </div>
@@ -80,7 +81,15 @@ function Suporte({
                             com nossa equipe para receber ajuda.
                         </p>
 
-                        <button>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                window.open(
+                                    "https://wa.me/5589981400856",
+                                    "_blank"
+                                );
+                            }}
+                        >
                             Entrar em contato
                         </button>
                     </div>
@@ -121,6 +130,7 @@ function Suporte({
             <Footer
                 onSobre={onSobre}
                 onSuporte={onSuporte}
+                onCategoria={onCategoria}
             />
         </>
     );

@@ -11,6 +11,9 @@ const autorizar =
 
 const router = express.Router();
 
+const uploadImagem =
+    require("../middlewares/uploadImagem");
+
 router.get(
     "/",
     autenticar,
@@ -22,6 +25,7 @@ router.post(
     "/",
     autenticar,
     autorizar("administrador"),
+    uploadImagem.single("imagem"),
     adminProdutoController.criar
 );
 
@@ -36,7 +40,15 @@ router.put(
     "/:id",
     autenticar,
     autorizar("administrador"),
+    uploadImagem.single("imagem"),
     adminProdutoController.atualizar
+);
+
+router.delete(
+    "/:id",
+    autenticar,
+    autorizar("administrador"),
+    adminProdutoController.remover
 );
 
 router.put(

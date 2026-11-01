@@ -250,3 +250,33 @@
     padding: 10px 0;
   }
 }
+.cadastro-error {
+  margin: 12px 0;
+  color: #d32f2f;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.cadastro-success {
+  margin: 16px 0;
+  padding: 16px;
+  border: 1px solid #218838;
+  border-radius: 8px;
+  background-color: #eaf7ed;
+  color: #155724;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.6;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.cadastro-success p {
+  margin: 0 0 10px;
+}
+
+.cadastro-success .voltar-login {
+  font-weight: 700;
+  text-decoration: underline;
+}

@@ -3,6 +3,7 @@ const express = require("express");
 const produtoController = require("../controllers/produtoController");
 const autenticar = require("../middlewares/authMiddleware");
 const autorizar = require("../middlewares/autorizar");
+const uploadImagem = require("../middlewares/uploadImagem");
 
 const router = express.Router();
 
@@ -14,6 +15,7 @@ router.post(
     "/",
     autenticar,
     autorizar("administrador"),
+    uploadImagem.single("imagem"),
     produtoController.criar
 );
 
@@ -21,6 +23,7 @@ router.put(
     "/:id",
     autenticar,
     autorizar("administrador"),
+    uploadImagem.single("imagem"),
     produtoController.atualizar
 );
 

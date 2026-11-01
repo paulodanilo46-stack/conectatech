@@ -1,5 +1,45 @@
+
 const produtoRepository =
     require("../repositories/produtoRepository");
+
+const supabase =
+    require("../config/supabaseStorage");
+
+const crypto = require("crypto");
+
+const enviarImagemSupabase = async (arquivo) => {
+    const extensoes = {
+        "image/jpeg": "jpg",
+        "image/png": "png",
+        "image/webp": "webp"
+    };
+
+    const extensao = extensoes[arquivo.mimetype];
+
+    if (!extensao) {
+        throw new Error("Formato de imagem não permitido.");
+    }
+
+    const nomeArquivo = `${crypto.randomUUID()}.${extensao}`;
+
+    const { error } = await supabase.storage
+        .from("produtos")
+        .upload(nomeArquivo, arquivo.buffer, {
+            contentType: arquivo.mimetype,
+            upsert: false
+        });
+
+    if (error) {
+        throw error;
+    }
+
+    const { data } = supabase.storage
+        .from("produtos")
+        .getPublicUrl(nomeArquivo);
+
+    return data.publicUrl;
+};
+
 
 const listar = async (req, res) => {
     try {
@@ -51,11 +91,20 @@ const criar = async (req, res) => {
             });
         }
 
-        if (!Number.isInteger(Number(estoque)) || Number(estoque) < 0) {
+        if (
+            !Number.isInteger(Number(estoque)) ||
+            Number(estoque) < 0
+        ) {
             return res.status(400).json({
                 mensagem:
                     "O estoque deve ser um número inteiro maior ou igual a zero."
             });
+        }
+
+        let imagemUrl = imagem || null;
+
+        if (req.file) {
+            imagemUrl = await enviarImagemSupabase(req.file);
         }
 
         const produto =
@@ -64,7 +113,7 @@ const criar = async (req, res) => {
                 descricao: descricao || null,
                 preco: Number(preco),
                 categoria_id: Number(categoria_id),
-                imagem: imagem || null,
+                imagem: imagemUrl,
                 avaliacao:
                     avaliacao === undefined
                         ? 0
@@ -123,9 +172,10 @@ const atualizar = async (req, res) => {
             categoria_id,
             imagem,
             avaliacao,
-            estoque,
-            ativo
+            estoque
         } = req.body;
+
+        let { ativo } = req.body;
 
         if (
             !nome ||
@@ -157,11 +207,34 @@ const atualizar = async (req, res) => {
             });
         }
 
+        if (ativo === "true") {
+            ativo = true;
+        } else if (ativo === "false") {
+            ativo = false;
+        }
+
         if (typeof ativo !== "boolean") {
             return res.status(400).json({
                 mensagem:
                     "O campo ativo deve ser verdadeiro ou falso."
             });
+        }
+
+        const produtoAtual =
+            await produtoRepository.buscarPorId(
+                req.params.id
+            );
+
+        if (!produtoAtual) {
+            return res.status(404).json({
+                mensagem: "Produto não encontrado."
+            });
+        }
+
+        let imagemUrl = imagem ?? produtoAtual.imagem;
+
+        if (req.file) {
+            imagemUrl = await enviarImagemSupabase(req.file);
         }
 
         const produto =
@@ -172,7 +245,7 @@ const atualizar = async (req, res) => {
                     descricao: descricao || null,
                     preco: Number(preco),
                     categoria_id: Number(categoria_id),
-                    imagem: imagem || null,
+                    imagem: imagemUrl,
                     avaliacao:
                         avaliacao === undefined
                             ? 0
@@ -181,12 +254,6 @@ const atualizar = async (req, res) => {
                     ativo
                 }
             );
-
-        if (!produto) {
-            return res.status(404).json({
-                mensagem: "Produto não encontrado."
-            });
-        }
 
         return res.status(200).json({
             mensagem:
@@ -288,6 +355,28 @@ const alterarAtivo = async (req, res) => {
     }
 };
 
+const remover = async (req, res) => {
+    try {
+        const produto = await produtoRepository.remover(req.params.id);
+
+        if (!produto) {
+            return res.status(404).json({
+                mensagem: "Produto não encontrado."
+            });
+        }
+
+        return res.status(200).json({
+            mensagem: "Produto excluído com sucesso."
+        });
+
+    } catch (erro) {
+        console.error(erro);
+
+        return res.status(500).json({
+            mensagem: "Erro ao excluir produto."
+        });
+    }
+};
 
 module.exports = {
     listar,
@@ -295,5 +384,6 @@ module.exports = {
     buscarPorId,
     atualizar,
     atualizarEstoque,
-    alterarAtivo
+    alterarAtivo,
+    remover
 };

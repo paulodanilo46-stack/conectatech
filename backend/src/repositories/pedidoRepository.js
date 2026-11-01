@@ -84,8 +84,8 @@ const buscarPorId = async (id) => {
     return resultado.rows[0];
 };
 
-const listarItens = async (pedidoId) => {
-    const resultado = await pool.query(
+const listarItens = async (pedidoId, db = pool) => {
+    const resultado = await db.query(
         `SELECT
             ip.id,
             ip.produto_id,

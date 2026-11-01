@@ -9,7 +9,8 @@ import "../styles/footer.css";
 
 function Footer({
     onSobre,
-    onSuporte
+    onSuporte,
+    onCategoria
 }) {
     return (
         <footer className="footer">
@@ -42,9 +43,31 @@ function Footer({
 
                     <h3>Categorias</h3>
 
-                    <a href="#">Notebooks</a>
-                    <a href="#">Smartphones</a>
-                    <a href="#">Componentes</a>
+                    <a
+                        href="#"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            console.log("Clicou em Notebooks");
+                            console.log("Função recebida:", onCategoria);
+                            onCategoria?.("Notebooks");
+                        }}
+                    >
+                        Notebooks
+                    </a>
+
+                    <a href="#" onClick={(e) => {
+                        e.preventDefault();
+                        onCategoria?.("Smartphones");
+                    }}>
+                        Smartphones
+                    </a>
+
+                    <a href="#" onClick={(e) => {
+                        e.preventDefault();
+                        onCategoria?.("Componentes");
+                    }}>
+                        Componentes
+                    </a>
 
                 </div>
 
